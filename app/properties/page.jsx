@@ -2,13 +2,15 @@ import PropertyCard from "@/components/PropertyCard";
 import PropertySearchForm from "@/components/PropertySearchForm";
 import properties from "@/properties.json";
 // import Pagination from "@/components/Pagination";
-// import Property from "@/models/Property";
+import Property from "@/models/Property";
+import connectDB from "@/config/databse";
 // import connectDB from "@/config/database";
 
 const PropertiesPage = async () => {
+  await connectDB();
+  const properties = await Property.find({}).lean();
   return (
     <>
-      <h1>properties</h1>
       <section className="bg-blue-700 py-4">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-start">
           <PropertySearchForm />
