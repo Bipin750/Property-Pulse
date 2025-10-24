@@ -1,28 +1,23 @@
-import PropertyCard from "@/components/PropertyCard";
-import PropertySearchForm from "@/components/PropertySearchForm";
+import React from "react";
 import properties from "@/properties.json";
-// import Pagination from "@/components/Pagination";
-// import Property from "@/models/Property";
-// import connectDB from "@/config/database";
+import PropertyCard from "./PropertyCard";
+import Link from "next/link";
 
-const PropertiesPage = async () => {
+const HomeProperties = () => {
+  const recentProperties = properties.slice(0, 3);
   return (
     <>
-      <h1>properties</h1>
-      <section className="bg-blue-700 py-4">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-start">
-          <PropertySearchForm />
-        </div>
-      </section>
       <section className="px-4 py-6">
         <div className="container-xl lg:container m-auto px-4 py-6">
-          <h1 className="text-2xl mb-4">Browse Properties</h1>
+          <h2 className="text-3xl font-bold text-blue-500 mb-6 text-center">
+            Recent Properties
+          </h2>
 
           {properties.length === 0 ? (
             <p>No properties found</p>
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {properties.map((property, index) => (
+              {recentProperties.map((property, index) => (
                 <PropertyCard property={property} key={index} />
               ))}
             </div>
@@ -36,8 +31,17 @@ const PropertiesPage = async () => {
           )} */}
         </div>
       </section>
+
+      <section className="m-auto max-w-lg my-10 px-6">
+        <Link
+          href="/properties"
+          className="block bg-black text-white text-center py-4 px-6 rounded-xl hover:bg-gray-700"
+        >
+          View All Properties
+        </Link>
+      </section>
     </>
   );
 };
 
-export default PropertiesPage;
+export default HomeProperties;
