@@ -9,6 +9,7 @@ import connectDB from "@/config/databse";
 const PropertiesPage = async () => {
   await connectDB();
   const properties = await Property.find({}).lean();
+
   return (
     <>
       <section className="bg-blue-700 py-4">
