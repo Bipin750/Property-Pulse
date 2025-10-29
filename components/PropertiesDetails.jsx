@@ -6,9 +6,10 @@ import {
   FaRulerCombined,
   FaTimes,
 } from "react-icons/fa";
+import PropertyMap from "./PropertyMap";
 
 const PropertiesDetails = ({ property }) => {
-  console.log(property);
+  // console.log(property);
 
   return (
     <main>
@@ -93,7 +94,7 @@ const PropertiesDetails = ({ property }) => {
       </div>
       {/* <!-- Map --> */}
       <div className="bg-white p-6 rounded-lg shadow-md mt-6">
-        <div id="map"></div>
+        <PropertyMap property={property} />
       </div>
     </main>
   );
