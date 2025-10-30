@@ -13,7 +13,9 @@ import PropertyContactForm from "@/components/PropertyContactForm";
 
 const PropertyPage = async ({ params }) => {
   await connectDB();
-  const { id } = await params;
+  const { id } = params;
+  console.log(id);
+
   const propertyDoc = await Property.findById(id).lean();
   const property = convertToSerializeableObject(propertyDoc);
   // console.log(property);
