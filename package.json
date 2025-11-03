@@ -9,11 +9,11 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "auth": "^1.2.3",
     "cloudinary": "^2.8.0",
     "mapbox-gl": "^3.16.0",
     "mongoose": "^8.19.2",
-    "next": "^14.2.13",
-    "next-auth": "^4.24.11",
+    "next": "^16.0.1",
     "photoswipe": "^5.4.4",
     "react": "19.2.0",
     "react-dom": "19.2.0",
