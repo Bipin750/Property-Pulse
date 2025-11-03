@@ -1,24 +1,20 @@
-import PropertiesDetails from "@/components/PropertiesDetails";
 import PropertyHeaderImage from "@/components/PropertyHeaderImage";
-import PropertyImages from "@/components/PropertyImages";
 import connectDB from "@/config/databse";
 import Property from "@/models/Property";
-import Link from "next/link";
-import React from "react";
-import { FaArrowLeft } from "react-icons/fa";
-import { convertToSerializeableObject } from "@/utils/convertToObject";
+import PropertyImages from "@/components/PropertyImages";
 import BookmarkButton from "@/components/BookmarkButton";
 import ShareButtons from "@/components/ShareButtons";
 import PropertyContactForm from "@/components/PropertyContactForm";
+import { convertToSerializeableObject } from "@/utils/convertToObject";
+import Link from "next/link";
+import { FaArrowLeft } from "react-icons/fa";
+import PropertiesDetails from "@/components/PropertiesDetails";
 
 const PropertyPage = async ({ params }) => {
   await connectDB();
-  const { id } = params;
-  console.log(id);
-
+  const { id } = await params;
   const propertyDoc = await Property.findById(id).lean();
   const property = convertToSerializeableObject(propertyDoc);
-  // console.log(property);
 
   if (!property) {
     return (
@@ -41,12 +37,12 @@ const PropertyPage = async ({ params }) => {
           </Link>
         </div>
       </section>
-
       <section className="bg-blue-50">
         <div className="container m-auto py-10 px-6">
           <div className="grid grid-cols-1 md:grid-cols-[70%_30%] w-full gap-6">
-            {/* Property info */}
             <PropertiesDetails property={property} />
+
+            {/* <!-- Sidebar --> */}
             <aside className="space-y-4">
               <BookmarkButton property={property} />
               <ShareButtons property={property} />
@@ -59,5 +55,4 @@ const PropertyPage = async ({ params }) => {
     </>
   );
 };
-
 export default PropertyPage;
